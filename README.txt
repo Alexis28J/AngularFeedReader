@@ -57,9 +57,6 @@ const app = initializeApp(firebaseConfig);
 - Poi andare, sul toolbar laterale, su Creazione, poi su Firebase database
   Consiglio: usare server europeo 
 
-- https://firebase.google.com/docs/auth/web/password-auth?hl=it - Firebase docs 
-(Eseguire l'autenticazione con Firebase utilizzando account basati su password con JavaScript)
-
 - ng g c /components/loginComponent
 - ng g c /components/homeComponent
 - ng g c /components/headerComponent
@@ -78,5 +75,44 @@ const app = initializeApp(firebaseConfig);
 
 - Modifiche su login-component.ts
 
+- Firebase docs 
+  https://firebase.google.com/docs/auth/web/start?hl=it 
+  https://firebase.google.com/docs/auth/web/password-auth?hl=it 
+  (Creare un account basato su password - Accedere come utente con un indirizzo email e una password)
 
-   
+- Creiamo un servizio solo per l'autenticazione - ng g s /services/AuthService
+- Su auth-service.ts, incolliamo il codice di "Impostare un osservatore dello stato di autenticazione e ottenere i dati utente"
+- Su login-component.ts, incolliamo il codice di "Accedere come utente con un indirizzo email e una password"
+- Modifiche in auth-service.ts, login-component.ts e login-component.html
+- Tastino "logout" nell'Header: importare AuthService in header-component.ts e mettiamo un if in header-component.html
+- Incollo codice "Passaggi successivi" nell'auth-service.ts
+- Modifiche in header-component.ts e header-component.html
+- Facciamo una guard per proteggere la home: ng g guard /guards/authGuard - Invia su "CanActivate"
+- Abbiamo rinominato da auth-guard-guard a auth-guard
+- Modifiche in app.routes.ts
+
+TASK: IMPLEMENTARE LA REGISTRAZIONE
+
+Creare un account basato su password
+
+const auth = getAuth();
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+
+OPZIONALE: FARE UN VALIDATOR DELLA PASSWORD
+
+- creiamo RegisterComponent
+- ho aggiunto la route in app.routes.ts
+
+- ALTRO TASK: https://angular.dev/guide/testing  
+  FARE IL TUTORIAL - I PRIMI 4 STEP
+
