@@ -31,17 +31,17 @@ import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyCTLd1TZjSo5FCifm2GFJU-XTQvp1Xi6zA",
+  apiKey: "........"
 
-  authDomain: "feed-reader-14409.firebaseapp.com",
+  authDomain: "......",
 
-  projectId: "feed-reader-14409",
+  projectId: "feed-reader-....",
 
-  storageBucket: "feed-reader-14409.firebasestorage.app",
+  storageBucket: "feed-reader-14409.....",
 
-  messagingSenderId: "945417544215",
+  messagingSenderId: "94541......",
 
-  appId: "1:945417544215:web:06c14ebcfeb6006bde3252"
+  appId: "....."
 
 };
 
