@@ -13,6 +13,7 @@ export class RegisterComponent {
 
   email = '';
   password = '';
+  confirmPassword = '';
   errorMessage = signal('');
 
   // email e password sono le variabili legate agli input del form con [(ngModel)].
@@ -33,10 +34,21 @@ export class RegisterComponent {
 
 
   doRegister() {  //Metodo principale
-    if (!this.email || !this.password) {   //* Validazione base
-      this.errorMessage.set('Inserisci email e password');
+
+    // if (!this.email || !this.password) {   //* Validazione base
+    //   this.errorMessage.set('Inserisci email e password');
+    //   return;
+    // }
+    if (!this.email || !this.password && this.confirmPassword) {  
+      this.errorMessage.set('Compila tutti i campi');
       return;
     }
+
+    if (this.password !== this.confirmPassword) {
+      this.errorMessage.set('Le password non coincidono!');
+      return;   //Se le password non coincidono, il metodo si ferma e non chiama Firebase.
+    }
+
 
     this.authServ.registerWithEmailAndPassword(this.email, this.password)  //Chiamata a Firebase tramite AuthService
       .then(() => { this.router.navigate(['/home']) })   //Se va bene
@@ -79,13 +91,25 @@ export class RegisterComponent {
     }
   }
 
-// Scopo: non mostrare all’utente i messaggi brutti e tecnici di Firebase.
-//(code: string) → è il codice di errore che Firebase restituisce, ad esempio auth/email-already-in-use.
-//:string → la funzione ritorna una stringa, che è il messaggio in italiano da mostrare all’utente.
-// switch (code):
-//   - per ogni codice noto, ritorni un messaggio chiaro in italiano.
-//   - default copre tutti i casi non gestiti.
-// È private perché serve solo dentro questo componente.
+  // Scopo: non mostrare all’utente i messaggi brutti e tecnici di Firebase.
+  //(code: string) → è il codice di errore che Firebase restituisce, ad esempio auth/email-already-in-use.
+  //:string → la funzione ritorna una stringa, che è il messaggio in italiano da mostrare all’utente.
+  // switch (code):
+  //   - per ogni codice noto, ritorni un messaggio chiaro in italiano.
+  //   - default copre tutti i casi non gestiti.
+  // È private perché serve solo dentro questo componente.
 
 
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 1 L’utente compila email, password e conferma password.
+// 2 doRegister() controlla che:
+//   - i campi non siano vuoti
+//   - le password coincidano
+// 3 Se tutto è ok → chiama Firebase.
+// 4 Firebase crea l’utente.
+// 5 onAuthStateChanged nel tuo AuthService imposta isAuth(true).
+// 6 L’utente viene reindirizzato alla home.

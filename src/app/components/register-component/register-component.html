@@ -3,7 +3,8 @@
 
     <form (ngSubmit)="doRegister()"> 
         <input type="text" [(ngModel)] = "email" name = "email" placeholder="Email">
-        <input type="text" [(ngModel)] = "password" name="password" placeholder="Password">
+        <input type="password" [(ngModel)] = "password" name="password" placeholder="Password">
+        <input type="password" [(ngModel)] = "confirmPassword" name="confirmPassword" placeholder="Conferma la password">
         <button type="submit">Registrati</button>
     </form>
 
