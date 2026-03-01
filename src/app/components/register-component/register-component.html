@@ -1,1 +1,22 @@
-<p>register-component works!</p>
+<div>
+    <h2>Registrazione</h2>
+
+    <form (ngSubmit)="doRegister()"> 
+        <input type="text" [(ngModel)] = "email" name = "email" placeholder="Email">
+        <input type="text" [(ngModel)] = "password" name="password" placeholder="Password">
+        <button type="submit">Registrati</button>
+    </form>
+
+    @if (errorMessage()) {
+        <p style="color: red">{{ errorMessage() }}</p>
+    }
+
+    <p>
+        Hai già un'account? <a routerLink="/login">Accedi</a>
+    </p>
+</div>
+
+
+<!-- • 	Gli input aggiornano email e password.
+• 	Quando invii il form → chiama doRegister().
+• 	Se errorMessagge() non è vuoto → mostra il messaggio. -->

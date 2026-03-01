@@ -92,6 +92,7 @@ const app = initializeApp(firebaseConfig);
 - Modifiche in app.routes.ts
 
 TASK: IMPLEMENTARE LA REGISTRAZIONE
+https://firebase.google.com/docs/auth/web/password-auth?hl=it
 
 Creare un account basato su password
 
