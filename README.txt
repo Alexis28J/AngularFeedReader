@@ -157,6 +157,6 @@ Di nuovo su rss-service.ts, ho modificato il metodo news() per restituire i feed
 Nota: CORS è un meccanismo di sicurezza implementato nei browser web che consente o blocca le richieste HTTP tra domini diversi. Se stai cercando di recuperare dati da un dominio diverso da quello del tuo sito web, potresti incontrare problemi di CORS. 
 Per risolvere questo problema, puoi utilizzare un proxy server o configurare il server di destinazione per consentire le richieste CORS.
 
-ng g i /model/news
+ng g i /model/news  -  creo un'interfaccia per rappresentare una notizia (news.model.ts)
 
 TASK: aggiungere pubDate e mettere un ordine per data 

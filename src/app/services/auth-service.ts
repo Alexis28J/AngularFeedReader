@@ -1,7 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { FirebaseService } from './firebase-service';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { log } from 'firebase/firestore/pipelines';
 
 @Injectable({
   providedIn: 'root',

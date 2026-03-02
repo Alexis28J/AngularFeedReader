@@ -46,11 +46,11 @@ export class FirestoreService {
 
   }
 
+
   getUserFeeds() {  //deve leggere i dati
    if (this.authserv.auth.currentUser) {  //se c'è il current user
     const userRef = doc(this.db, 'users', this.authserv.auth.currentUser.uid);
-    return getDoc(userRef).then(result => 
-      { 
+    return getDoc(userRef).then(result => { 
         //console.log(result.data());
         this.userFeeds = result.data()!['feeds'];
         //console.log(this.userFeeds);
@@ -60,3 +60,4 @@ export class FirestoreService {
      return Promise.reject('User not authenticated');
   }
 }
+

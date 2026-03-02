@@ -1,3 +1,20 @@
 <div>
-    <p>home-component works!</p>
+    <button type="button" (click)="toggleSortByOldest()">
+        @if (sortOldestFirst()) {
+            Mostra ordine originale
+        } @else {
+            Ordina dal più vecchio al più recente
+        }
+    </button>
+
+    <!-- Ho sostituito rssServ.news() con displayedNews() per riflettere l'ordinamento selezionato. 
+         In questo modo, le news vengono visualizzate nell'ordine corretto in base allo stato di sortOldestFirst. -->
+    @for (news of displayedNews(); track $index) {
+        <div>
+            <h3>{{news.title}}</h3>
+            <p>{{news.description}}</p>
+            <span>{{news.pubDate | date:'dd/MM/yyyy'}}</span>
+            <a href="{{news.url}}">Vai al sito</a>
+        </div>
+    }
 </div>

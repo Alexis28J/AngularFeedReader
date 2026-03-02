@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { log } from 'firebase/firestore/pipelines';
 import { FirestoreService } from '../../services/firestore-service';
 import { Feed } from '../../model/feed';
 
