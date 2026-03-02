@@ -1,0 +1,22 @@
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid crimson;
+    padding: 1em;
+    width: 100vw;
+}
+
+header h1{
+    color: crimson;
+    font-size: 2em;
+    margin: 0.5em
+    ;
+}
+
+header nav{
+    display: flex;
+    gap: 0.5em;
+}

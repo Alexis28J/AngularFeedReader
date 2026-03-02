@@ -117,3 +117,24 @@ OPZIONALE: FARE UN VALIDATOR DELLA PASSWORD
 - ALTRO TASK: https://angular.dev/guide/testing  
   FARE IL TUTORIAL - I PRIMI 4 STEP
 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Lezione Lunedì 2 marzo 2026:
+
+Abbiamo aggiunto un po' di css per rendere più leggibile (presentabile) l'app.
+
+ng g c /components/newFeed  ---  componente newFeedComponent
+
+Aggiungo link a header-component.html.
+
+Per fare la form di new-feed useremo le "Reactive Form" (vedi new-feed-component.ts e new-feed-component.html)
+
+Vado su Firebase Database in Firebase. E' un database standard cioè non SQL.
+Abbiamo creato una raccolta di feed. Ho incollato (inserito) il link RSS di Ansa (https://www.ansa.it/sito/ansait_rss.xml).
+NOTA: ho cliccato su ID automatico per generare un ID documento (perché questo campo è obbligatorio)
+
+ng g s /services/firestoreService  - servizio per interagire con il database Firestore di Firebase.
+
+Ho iniettato il servizio di Firestore su new-feed-component.ts e ho messo la logica di onSubmit() (vedi anche firestore-service.ts).
+-->  ng g i /model/feed  - creo un'interfaccia per rappresentare un feed (feed.model.ts) 

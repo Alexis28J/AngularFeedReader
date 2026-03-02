@@ -1,0 +1,11 @@
+<form [formGroup]="newFeedForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name: </label>
+        <input type="name" formControlName="name">
+    </div>
+        <div>
+        <label for="url">URL: </label>
+        <input type="url" formControlName="url">
+    </div>
+    <button type="submit">Create Feed</button>
+</form>
