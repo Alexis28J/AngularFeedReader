@@ -1,0 +1,14 @@
+
+1. Inizializziamo la signal sortOldestFirst con il valore false, che indica che di default le news vengono ordinate dalla più recente alla più vecchia.
+
+2. displayedNews è una signal computata che dipende da rssServ.news() e sortOldestFirst(). 
+   Ogni volta che una di queste signal cambia, displayedNews viene ricalcolata automaticamente.
+
+3. se sortOldestFirst è false, allora non ordiniamo le news e le restituiamo così come sono, senza modificarle.
+   Se sortOldestFirst è true, allora ordiniamo le news in base alla data di pubblicazione, dalla più vecchia alla più recente, utilizzando la funzione sort().
+   Si crea una copia dell'array delle news con [...currentNews()] per evitare di modificare direttamente l'array originale, e poi si ordina questa copia.
+   Questo è importante perché sort() modifica l'array su cui viene chiamato, e vogliamo evitare di modificare direttamente l'array originale che potrebbe essere usato altrove nel codice.
+   [...] è l'operatore di spread in JavaScript, che permette di espandere un array in singoli elementi. In questo caso, viene usato per creare una nuova array che contiene gli stessi elementi di currentNews, ma che è una copia indipendente dell'array originale.
+
+4. La funzione toggleSortByOldest() viene chiamata quando l'utente clicca sul pulsante per cambiare l'ordinamento delle news.
+   Questa funzione inverte il valore di sortOldestFirst, passando da true a false o viceversa, a seconda del valore attuale. 

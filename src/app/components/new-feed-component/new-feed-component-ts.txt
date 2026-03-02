@@ -1,0 +1,12 @@
+NOTA: Un'istanza è un oggetto creato a partire da una classe. 
+
+1. Creazione di un'istanza di FormBuilder (fb) che viene utilizzata per costruire il modulo del nuovo feed.
+  In questo caso, fb è un'istanza della classe FormBuilder, che viene utilizzata per costruire il modulo del nuovo feed.
+  FormBuilder è una classe fornita da Angular che semplifica la creazione di moduli reattivi.
+
+2. newFeedForm è un oggetto FormGroup che rappresenta il modulo del nuovo feed. 
+   FormGroup è una classe che rappresenta un gruppo di controlli del modulo, in questo caso i campi name e url.
+   I controlli del modulo vengono creati utilizzando il metodo group() del FormBuilder, che accetta un oggetto con i nomi dei campi e i loro valori iniziali.
+   name e url, entrambi inizializzati con stringhe vuote.
+
+3. as Feed è un'operazione di casting (cioè un'operazione di conversione del tipo) che indica al compilatore TypeScript di trattare newFeedForm.value come un oggetto di tipo Feed.

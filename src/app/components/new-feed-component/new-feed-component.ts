@@ -13,21 +13,16 @@ export class NewFeedComponent {
 
   firestore = inject(FirestoreService);
 
-  //Creazione di un'istanza di FormBuilder (fb) che viene utilizzata per costruire il modulo del nuovo feed.
-  //NOTA: Un'istanza è un oggetto creato a partire da una classe. 
-  //In questo caso, fb è un'istanza della classe FormBuilder, che viene utilizzata per costruire il modulo del nuovo feed.
-  fb: FormBuilder = new FormBuilder(); 
+  fb: FormBuilder = new FormBuilder();  //*1 
  
-  //newFeedForm è un oggetto FormGroup che rappresenta il modulo del nuovo feed. 
-  //Viene creato utilizzando il FormBuilder (fb) e contiene due campi: name e url, entrambi inizializzati con stringhe vuote.
-  newFeedForm = this.fb.group({   
+  newFeedForm = this.fb.group({   //*2
     name: [''],
     url: ['']
   });
 
   onSubmit(){
     //console.log(this.newFeedForm.value);
-    const newFeed = this.newFeedForm.value as Feed;  //as Feed è un'operazione di casting che indica al compilatore TypeScript di trattare newFeedForm.value come un oggetto di tipo Feed.
+    const newFeed = this.newFeedForm.value as Feed;  //*3
    
     this.firestore.addFeed(newFeed).then(() => {
       alert('Feed added successfully!');

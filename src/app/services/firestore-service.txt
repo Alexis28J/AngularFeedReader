@@ -1,0 +1,42 @@
+Questo servizio, chiamato FirestoreService, è responsabile della gestione dei feed dell'utente utilizzando il database Firestore di Firebase.
+
+1. getFirestore è una funzione che restituisce un'istanza del database Firestore associato all'app Firebase specificata. 
+   In questo caso, viene passato this.firebase.app, che è l'istanza dell'app Firebase creata nel servizio FirebaseService.
+
+2. userFeeds è un array di oggetti di tipo Feed che rappresenta i feed dell'utente. In questo esempio, viene utilizzato come una semplice struttura dati in memoria per memorizzare i feed aggiunti dall'utente. 
+   In un'applicazione reale, questa logica dovrebbe essere sostituita con una chiamata a un database o a un servizio di backend per salvare i dati in modo persistente.
+
+3. addFeed è un metodo che accetta un oggetto newFeed di tipo Feed e lo aggiunge alla lista dei feed dell'utente.
+
+   Se l'utente è autenticato, allora procede ad aggiungere il feed. Altrimenti, non fa nulla o gestisce il caso in cui l'utente non è autenticato.
+
+    - Aggiunge un nuovo feed all'array userFeeds. In un'applicazione reale, questa logica dovrebbe essere sostituita con una chiamata a un database o a un servizio di backend 
+      per salvare i dati in modo persistente (cioè in modo che i dati non vadano persi quando l'app viene chiusa o ricaricata).
+
+   -  userRef è una variabile che contiene un riferimento a un documento specifico all'interno della collezione 'users' del database Firestore. 
+      Il riferimento viene creato utilizzando la funzione doc, che prende come argomenti il database (this.db), il nome della collezione ('users') e l'ID dell'utente attualmente autenticato (this.authserv.auth.currentUser.uid).
+      uid è un identificatore univoco associato all'utente autenticato, che viene utilizzato per identificare il documento corrispondente all'utente nella collezione 'users'.
+      In parole semplici, userRef rappresenta un documento specifico all'interno della collezione 'users' che corrisponde all'utente attualmente autenticato.
+
+   -  setDoc è una funzione che consente di scrivere dati in un documento specifico all'interno di Firestore.
+      In questo caso, setDoc viene utilizzato per aggiornare il documento a cui userRef fa riferimento, impostando il campo 'feeds' con il valore di this.userFeeds. 
+      L'opzione {merge: true} indica che i dati esistenti nel documento non devono essere sovrascritti, ma piuttosto uniti con i nuovi dati forniti.
+      setDoc è asincrona come tutte le operazioni online. setDoc ritorna una Promise che si risolve quando l'operazione di scrittura è completata con successo o si rifiuta se si verifica un errore durante la scrittura.
+
+   Se, invece, l'utente non è autenticato, viene restituita una Promise rifiutata con un messaggio di errore.
+
+4. getUserFeeds è un metodo che dovrebbe leggere i feed dell'utente dal database. Tuttavia, in questo esempio, non è implementato e restituisce semplicemente una Promise rifiutata con un messaggio di errore se l'utente non è autenticato. 
+   In un'applicazione reale, questo metodo dovrebbe essere implementato per recuperare i feed dell'utente dal database Firestore o da un servizio di backend.
+
+   Se l'utente è autenticato, dovrebbe recuperare i feed dell'utente dal database e restituirli. Se l'utente non è autenticato, restituisce una Promise rifiutata con un messaggio di errore.
+
+   return getDoc(userRef).then(result => {      --- a
+    this.userFeeds = result.data()!['feeds'];   --- b
+    return this.userFeeds;                      --- c
+   });
+
+a. getDoc è una funzione che consente di leggere i dati da un documento specifico in Firestore. In questo caso, viene passato userRef, che è il riferimento al documento dell'utente nella collezione 'users'. 
+b. .then(result => { ... }) è un metodo che viene chiamato quando la Promise restituita da getDoc si risolve con successo. Il risultato della lettura del documento viene passato come argomento alla funzione all'interno di .then(). 
+   result.data() restituisce i dati del documento letto, e ['feeds'] accede al campo 'feeds' all'interno di quei dati. Il valore di questo campo viene assegnato a this.userFeeds.
+
+c. return this.userFeeds; restituisce l'array dei feed dell'utente dopo che è stato aggiornato con i dati letti dal documento Firestore.

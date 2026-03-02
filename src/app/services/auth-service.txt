@@ -1,0 +1,15 @@
+Questo servizio di autenticazione è progettato per gestire l’autenticazione degli utenti utilizzando Firebase Authentication. 
+
+1. Ottieni l’istanza di Auth dal tuo FirebaseService, che a sua volta ha l’istanza dell’app Firebase.
+   firebaseServ.app è l’istanza dell’app Firebase che hai creato nel tuo FirebaseService. Passandola a getAuth, ottieni l’istanza di Auth associata a quell’app, che puoi poi utilizzare per tutte le operazioni di autenticazione come registrazione, login e logout.
+   getAuth: è una funzione di Firebase che ritorna l’istanza di Auth, usata per tutte le operazioni di autenticazione.
+
+2. isAuth è un signal che tiene traccia dello stato di autenticazione dell’utente. Viene aggiornato quando l’utente effettua il login o il logout, e può essere usato in tutto l’app per mostrare o nascondere contenuti basati sull’autenticazione.
+
+3. loginWithMailAndPassword è un metodo che utilizza la funzione signInWithEmailAndPassword di Firebase per autenticare un utente con email e password. 
+Se le credenziali sono corrette, Firebase risolve la Promise, altrimenti la rifiuta con un errore. 
+Questo metodo ritorna una Promise, che può essere gestita nel componente di login per mostrare messaggi di successo o errore all’utente.
+
+4. Se l’email è già in uso, o la password è troppo debole, Firebase rifiuta la Promise con un errore. 
+Ritorna una Promise, gestita nel componente di registrazione.
+createUserWithEmailAndPassword: è una funzione di Firebase che crea un nuovo utente con email e password.

@@ -1,0 +1,26 @@
+1. Metodo che prende in input il testo del feed rss e lo trasforma in un array di news.
+   Il formato rss è un formato xml, quindi dobbiamo usare un parser xml per estrarre le informazioni che ci interessano.
+   Un parser xml è una libreria che ci permette di leggere un file xml e di estrarre le informazioni che ci interessano.
+   In questo caso, ci interessa estrarre il titolo, la descrizione, la data e il link di ogni news.
+
+1.1. Creiamo un array di news che conterrà le news estratte dal feed rss
+
+1.2. Creiamo un parser xml 
+     new DOMParser() è un costruttore che crea un nuovo oggetto DOMParser, che è una classe fornita dai browser per analizzare stringhe XML o HTML 
+     e restituire un documento DOM (Document Object Model) che rappresenta la struttura del documento. 
+     In questo caso, stiamo creando un'istanza di DOMParser per poter analizzare il testo del feed RSS e estrarre le informazioni che ci interessano.
+
+1.3. Usiamo il metodo parseFromString del parser xml per analizzare il testo del feed rss e ottenere un documento xml
+     Il metodo parseFromString del DOMParser prende in input una stringa e un tipo di media (in questo caso "text/xml") e restituisce un documento DOM che rappresenta la struttura del documento XML.
+     In questo caso, stiamo analizzando il testo del feed RSS e ottenendo un documento XML che rappresenta la struttura del feed RSS.
+
+1.4. Usiamo il metodo getElementsByTagName del documento xml per ottenere tutti gli elementi item del feed rss
+     Il metodo getElementsByTagName del documento XML prende in input un nome di tag e restituisce una raccolta di tutti gli elementi del documento che hanno quel nome di tag.
+     In questo caso, stiamo ottenendo tutti gli elementi item del feed RSS, che rappresentano le singole news del feed RSS.
+
+1.5. Usiamo un ciclo for per iterare su tutti gli elementi item del feed rss e estrarre le informazioni che ci interessano
+     Il ciclo for ci permette di iterare su tutti gli elementi item del feed RSS e di estrarre le informazioni che ci interessano (titolo, descrizione, data e link) per ogni news del feed RSS.
+    
+    Nota: querySelector è un metodo che permette di selezionare un elemento del documento XML in base a un selettore CSS.
+    In questo caso, stiamo usando querySelector per selezionare l'elemento title, description, pubDate e link di ogni news del feed RSS.
+    Il selettore CSS "title" seleziona l'elemento title, "description" seleziona l'elemento description, "pubDate" seleziona l'elemento pubDate e "link" seleziona l'elemento link.

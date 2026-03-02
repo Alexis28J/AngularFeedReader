@@ -11,10 +11,9 @@ export class AuthService {
 
   firebaseServ = inject(FirebaseService);
 
-  auth = getAuth(this.firebaseServ.app);   // Ottieni l’istanza di Auth dal tuo FirebaseService, che a sua volta ha l’istanza dell’app Firebase.
-  // getAuth: è una funzione di Firebase che ritorna l’istanza di Auth, usata per tutte le operazioni di autenticazione.
+  auth = getAuth(this.firebaseServ.app);   // *1
 
-  isAuth = signal(false);
+  isAuth = signal(false);  //*2
 
   constructor() {
 
@@ -45,15 +44,13 @@ export class AuthService {
   //   });
   //   }
 
-  loginWithMailAndPassword(email: string, password: string) {      //Se l’email e password sono corretti, Firebase risolve la Promise, altrimenti la rifiuta con un errore.
-    return signInWithEmailAndPassword(this.auth, email, password);  // Ritorna una Promise, gestita nel componente di login.
+  loginWithMailAndPassword(email: string, password: string) {      //*3
+    return signInWithEmailAndPassword(this.auth, email, password);  
   }
 
-  registerWithEmailAndPassword        // Se l’email è già in uso, o la password è troppo debole, Firebase rifiuta la Promise con un errore.
+  registerWithEmailAndPassword        //*4
     (email: string, password: string) {
-    return createUserWithEmailAndPassword(this.auth, email, password);  // Ritorna una Promise, gestita nel componente di registrazione.
-    //createUserWithEmailAndPassword: è una funzione di Firebase che crea un nuovo utente con email e password.
-    
+    return createUserWithEmailAndPassword(this.auth, email, password);  
   }
 
   logout() {

@@ -29,15 +29,14 @@ export class RssService {
     .then(text => this.parseRss(text));
   }
 
-  //metodo che prende in input il testo del feed rss e lo trasforma in un array di news
-  parseRss(text: string): any {  //il formato rss è un formato xml, quindi dobbiamo usare un parser xml per estrarre le informazioni che ci interessano
-    const latestNews: News[] = [];   //creiamo un array di news che conterrà le news estratte dal feed rss
-    const parser = new DOMParser();  //creiamo un parser xml //new DOMParser() è un costruttore che crea un nuovo oggetto DOMParser, che è una classe fornita dai browser per analizzare stringhe XML o HTML e restituire un documento DOM (Document Object Model) che rappresenta la struttura del documento. In questo caso, stiamo creando un'istanza di DOMParser per poter analizzare il testo del feed RSS e estrarre le informazioni che ci interessano.
-    const xml = parser.parseFromString(text, 'application/xml'); 
+  parseRss(text: string): any {   //*1
+    const latestNews: News[] = [];   //*1.1
+    const parser = new DOMParser();  //*1.2
+    const xml = parser.parseFromString(text, 'application/xml'); //*1.3
 
-    const items = xml.querySelectorAll('item'); 
+    const items = xml.querySelectorAll('item'); //*1.4
 
-    for (let i = 0; i < items.length; i++) {
+    for (let i = 0; i < items.length; i++) {  //*1.5
       const element = items[i];
       const pubDateRaw = element.querySelector('pubDate')?.textContent ?? '';
       const parsedDate = new Date(pubDateRaw);
