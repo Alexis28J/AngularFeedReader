@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
+import { RssService } from '../../services/rss-service';
 
 @Component({
   selector: 'app-home-component',
@@ -8,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  rssServ = inject(RssService);
+
+  constructor(){
+  
+    //effect è una funzione che consente di eseguire del codice ogni volta che una dipendenza reattiva cambia.
+    effect(() => {
+      this.rssServ.news()
+    });
+  }
 }

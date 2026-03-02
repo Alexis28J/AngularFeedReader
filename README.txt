@@ -138,3 +138,25 @@ ng g s /services/firestoreService  - servizio per interagire con il database Fir
 
 Ho iniettato il servizio di Firestore su new-feed-component.ts e ho messo la logica di onSubmit() (vedi anche firestore-service.ts).
 -->  ng g i /model/feed  - creo un'interfaccia per rappresentare un feed (feed.model.ts) 
+
+Su firestore-service.ts, ho aggiunto un metodo addFeed() che aggiunge un nuovo feed all'array userFeeds. In un'applicazione reale, questa logica dovrebbe essere sostituita con una chiamata a un database o a un servizio di backend per salvare i dati in modo persistente.
+https://firebase.google.com/docs/firestore/manage-data/add-data  (Mobile and web SDKs  /  Set a document)
+
+Su new-feed-component.ts, ho modificato onSubmit() per creare un nuovo feed a partire dai dati del form e poi chiamare firestore.addFeed(newFeed) per aggiungere il feed al database.
+
+ng g s /services/rssService - servizio per interagire con i feed RSS. In questo servizio, potremmo implementare la logica per recuperare e analizzare i feed RSS, ma per ora lo lasciamo vuoto.
+
+Su home-component.ts, ho aggiunto un effetto che chiama rssServ.news() ogni volta che il componente viene renderizzato. Questo effetto è utile per recuperare i feed RSS e aggiornare la visualizzazione ogni volta che il componente viene caricato o quando i dati dei feed cambiano.
+
+Su rss-service.ts, ho aggiunto un metodo news() che attualmente restituisce un array di feed statico. In un'applicazione reale, questo metodo dovrebbe essere implementato per recuperare i feed RSS da una fonte esterna, come un'API o un database.
+
+Su firestore-service.ts, ho aggiunto un metodo getUserFeeds() che restituisce l'array userFeeds. In un'applicazione reale, questo metodo dovrebbe essere implementato per recuperare i feed dell'utente da un database o da un servizio di backend.
+
+Di nuovo su rss-service.ts, ho modificato il metodo news() per restituire i feed dell'utente recuperati da firestore.getUserFeeds(). In questo modo, quando chiamiamo rssServ.news() in home-component.ts, otterremo i feed dell'utente invece di un array statico.
+
+Nota: CORS è un meccanismo di sicurezza implementato nei browser web che consente o blocca le richieste HTTP tra domini diversi. Se stai cercando di recuperare dati da un dominio diverso da quello del tuo sito web, potresti incontrare problemi di CORS. 
+Per risolvere questo problema, puoi utilizzare un proxy server o configurare il server di destinazione per consentire le richieste CORS.
+
+ng g i /model/news
+
+TASK: aggiungere pubDate e mettere un ordine per data 

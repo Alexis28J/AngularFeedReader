@@ -29,8 +29,13 @@ export class NewFeedComponent {
   onSubmit(){
     //console.log(this.newFeedForm.value);
     const newFeed = this.newFeedForm.value as Feed;  //as Feed è un'operazione di casting che indica al compilatore TypeScript di trattare newFeedForm.value come un oggetto di tipo Feed.
-
-    this.firestore.addFeed(newFeed);
+   
+    this.firestore.addFeed(newFeed).then(() => {
+      alert('Feed added successfully!');
+      this.newFeedForm.reset();
+    }).catch((err) => {
+      alert('Error adding feed: ' + err);
+    });
   }
   
 }
