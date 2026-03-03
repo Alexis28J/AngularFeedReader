@@ -1,6 +1,7 @@
 export interface News {
     title: string,
     description: string,
-    pubDate: string,
-    url: string
+    pubDate?: Date,
+    url: string,
+    origin: string
 }

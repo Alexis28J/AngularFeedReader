@@ -157,6 +157,43 @@ Di nuovo su rss-service.ts, ho modificato il metodo news() per restituire i feed
 Nota: CORS è un meccanismo di sicurezza implementato nei browser web che consente o blocca le richieste HTTP tra domini diversi. Se stai cercando di recuperare dati da un dominio diverso da quello del tuo sito web, potresti incontrare problemi di CORS. 
 Per risolvere questo problema, puoi utilizzare un proxy server o configurare il server di destinazione per consentire le richieste CORS.
 
+Per eliminare il problema di CORS, possiamo utilizzare Firebase Hosting per ospitare la nostra applicazione Angular. Firebase Hosting consente di servire i file statici della nostra applicazione e gestisce automaticamente le richieste CORS, consentendo al nostro frontend di comunicare con il backend senza problemi di sicurezza.
+Per distribuire l'applicazione su Firebase Hosting, segui questi passaggi: 
+1. Assicurati di avere Firebase CLI installato. Se non lo hai, puoi installarlo globalmente usando npm:
+   npm install -g firebase-tools
+2. Accedi al tuo account Firebase:
+   firebase login
+3. Inizializza il progetto Firebase nella directory del tuo progetto Angular:
+   firebase init
+    Durante l'inizializzazione, seleziona "Hosting" e scegli la directory di output della build (di solito dist/).
+4. Compila l'applicazione Angular per la produzione:
+   ng build --prod
+5. Distribuisci l'applicazione su Firebase Hosting:
+   firebase deploy
+
+
 ng g i /model/news  -  creo un'interfaccia per rappresentare una notizia (news.model.ts)
 
 TASK: aggiungere pubDate e mettere un ordine per data 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Lezione di martedì 3 marzo 2026:
+
+https://www.rssboard.org/rss-specification#google_vignete  (Specifica RSS di Google)
+
+lazy loading è una tecnica di ottimizzazione delle prestazioni che consiste nel caricare risorse o componenti solo quando sono effettivamente necessari, invece di caricarli tutti all'avvio dell'applicazione. 
+In Angular, il lazy loading viene spesso utilizzato per caricare moduli in modo asincrono, migliorando così i tempi di caricamento iniziali e l'efficienza dell'applicazione.
+https://angular.dev/reference/migrations/route-lazy-loading  (Angular 21 - Route lazy loading)
+
+ng build serve per compilare l'applicazione Angular in un formato ottimizzato per la produzione. Questo comando esegue una serie di operazioni, tra cui la minificazione del codice, l'ottimizzazione delle risorse e la generazione di file statici che possono essere distribuiti su un server web.
+Dopo aver eseguito ng build, i file compilati si trovano nella cartella dist/ del progetto. Questi file possono essere distribuiti su un server web o su una piattaforma di hosting come Firebase Hosting, Vercel, Netcup, ecc.
+ng build si usa quando si è pronti a distribuire l'applicazione in produzione, mentre ng serve è più adatto per lo sviluppo locale, poiché consente di vedere le modifiche in tempo reale senza dover ricompilare manualmente ogni volta.
+
+Il main shrinking è una tecnica di ottimizzazione delle prestazioni che consiste nel ridurre le dimensioni del file principale (main.js) generato durante la compilazione dell'applicazione Angular. Questo processo include la rimozione del codice inutilizzato, la minificazione e l'ottimizzazione del codice per migliorare i tempi di caricamento e le prestazioni dell'applicazione.
+https://angular.io/guide/build#main-shrinking  (Main shrinking)
+
+
+Stack overflow è una piattaforma online di domande e risposte per programmatori e sviluppatori. È un luogo dove gli utenti possono porre domande su problemi di programmazione, condividere conoscenze e soluzioni, e collaborare con altri membri della comunità. Stack overflow è una risorsa preziosa per trovare soluzioni a problemi di programmazione comuni, ottenere consigli su best practice e imparare nuove tecnologie.
+https://stackoverflow.com/  (Stack overflow)
+

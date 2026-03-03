@@ -1,19 +1,24 @@
 <div>
-    <button type="button" (click)="toggleSortByOldest()">
+    <!-- <button type="button" (click)="toggleSortByOldest()">
         @if (sortOldestFirst()) {
             Mostra ordine originale
         } @else {
             Notizie meno recenti per prime
         }
-    </button>
+    </button> -->
 
     <!-- Ho sostituito rssServ.news() con displayedNews() per riflettere l'ordinamento selezionato. 
          In questo modo, le news vengono visualizzate nell'ordine corretto in base allo stato di sortOldestFirst. -->
-    @for (news of displayedNews(); track $index) {
+    @for (news of rssServ.news(); track $index) {
         <div>
-            <h3>{{news.title}}</h3>
-            <p>{{news.description}}</p>
-            <span>{{news.pubDate | date:'dd/MM/yyyy'}}</span>
+            <!-- <h3>{{news.title}}</h3> -->
+             <h3>{{news.title}}</h3>
+             <div>
+                <span>{{news.origin}}-{{news.pubDate}}</span>
+             </div>
+            <!-- <p>{{news.description}}</p> -->
+            <p [innerHTML]="news.description"></p>
+            <!-- <span>{{news.pubDate | date:'dd/MM/yyyy'}}</span> -->
             <a href="{{news.url}}">Vai al sito</a>
         </div>
     }

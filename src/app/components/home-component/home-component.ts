@@ -11,24 +11,24 @@ import { RssService } from '../../services/rss-service';
 export class HomeComponent {
 
   rssServ = inject(RssService);  
-  sortOldestFirst = signal(false);  //*1
+  // sortOldestFirst = signal(false);  //*1
 
-  displayedNews = computed(() => {  //*2
-    const currentNews = this.rssServ.news();  
+  // displayedNews = computed(() => {  //*2
+  //   const currentNews = this.rssServ.news();  
 
-    //*3
-    if (!this.sortOldestFirst()) {  
-      return currentNews;
-    }
+  //   //*3
+  //   if (!this.sortOldestFirst()) {  
+  //     return currentNews;
+  //   }
 
-    return [...currentNews].sort(   
-      (firstItem, secondItem) =>
-        new Date(firstItem.pubDate).getTime() - new Date(secondItem.pubDate).getTime(),
-    );
-  });
+  //   return [...currentNews].sort(   
+  //     (firstItem, secondItem) =>
+  //       new Date(firstItem.pubDate).getTime() - new Date(secondItem.pubDate).getTime(),
+  //   );
+  // });
 
-  //*4
-  toggleSortByOldest() {
-    this.sortOldestFirst.update((value) => !value);
-  }
+  // //*4
+  // toggleSortByOldest() {
+  //   this.sortOldestFirst.update((value) => !value);
+  // }
 }

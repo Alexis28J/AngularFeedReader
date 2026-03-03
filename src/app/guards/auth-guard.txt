@@ -1,0 +1,14 @@
+Questo è un guard che mi serve per proteggere le rotte, in questo caso la rotta del dashboard, se non sono autenticato mi reindirizza alla pagina di login. 
+In questo caso è un guard asincrono, perché voglio che torni una Promise, in modo da poter gestire meglio il flusso di autenticazione.
+
+
+1. Voglio che il Guard torni una Promise perché voglio gestire meglio il flusso di autenticazione, in modo da poter fare delle operazioni prima di decidere se permettere o meno l'accesso alla rotta, 
+   ad esempio posso fare una chiamata al backend per verificare se l'utente è ancora autenticato, oppure posso mostrare un messaggio di caricamento mentre verifico lo stato di autenticazione.
+   
+2. return new Promise((resolve, _) => ..)  - underscore per dichiarare un campo che non mi interessa, in questo caso il reject, perché non lo uso, ma è necessario per la sintassi della Promise
+
+3. effect(() => {...})  -  Questo è un effetto che mi permette di eseguire del codice ogni volta che cambia lo stato di autenticazione, in questo caso ogni volta che cambia isAuth,
+   ma non è necessario in questo caso, perché onAuthStateChanged già mi dice quando cambia lo stato di autenticazione.
+
+4. onAuthStateChanged è una funzione di Firebase che mi permette di ascoltare i cambiamenti dello stato di autenticazione, in questo caso mi dice se l'utente è loggato o no.
+   Se l'utente è loggato, risolvo la Promise con true, altrimenti navigo alla pagina di login e risolvo la Promise con false.

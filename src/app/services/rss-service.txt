@@ -1,3 +1,6 @@
+Questo è un servizio che mi permette di gestire i feed RSS, in particolare di estrarre le news da un feed RSS e di restituirle in un formato più comodo da usare nel mio frontend.
+
+--------------- DA SISTEMARE ---------------
 1. Metodo che prende in input il testo del feed rss e lo trasforma in un array di news.
    Il formato rss è un formato xml, quindi dobbiamo usare un parser xml per estrarre le informazioni che ci interessano.
    Un parser xml è una libreria che ci permette di leggere un file xml e di estrarre le informazioni che ci interessano.
