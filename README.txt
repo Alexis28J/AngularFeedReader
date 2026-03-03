@@ -197,3 +197,31 @@ https://angular.io/guide/build#main-shrinking  (Main shrinking)
 Stack overflow è una piattaforma online di domande e risposte per programmatori e sviluppatori. È un luogo dove gli utenti possono porre domande su problemi di programmazione, condividere conoscenze e soluzioni, e collaborare con altri membri della comunità. Stack overflow è una risorsa preziosa per trovare soluzioni a problemi di programmazione comuni, ottenere consigli su best practice e imparare nuove tecnologie.
 https://stackoverflow.com/  (Stack overflow)
 
+feedly è un lettore di feed RSS che consente agli utenti di aggregare e leggere i contenuti dei loro siti web preferiti in un unico posto. Feedly offre funzionalità come la categorizzazione dei feed, la possibilità di salvare articoli per leggerli in seguito, e l'integrazione con altre piattaforme come Evernote e Pocket. È una soluzione popolare per chi desidera rimanere aggiornato sulle ultime notizie e contenuti da diverse fonti online.
+https://feedly.com/  (Feedly)
+
+https://f-droid.org/it/packages/com.nunti/  (Nunti - un lettore di feed RSS open source per Android)
+
+
+SQL è un linguaggio di programmazione utilizzato per gestire e manipolare database relazionali. SQL consente agli utenti di creare, leggere, aggiornare e cancellare dati all'interno di un database, nonché di definire la struttura del database stesso. È uno dei linguaggi più comuni per l'interazione con i database e viene utilizzato in una vasta gamma di applicazioni, dalle piccole applicazioni web ai grandi sistemi aziendali.
+https://en.wikipedia.org/wiki/SQL  (SQL - Wikipedia)
+
+Docker è una piattaforma di containerizzazione che consente agli sviluppatori di creare, distribuire e eseguire applicazioni in ambienti isolati chiamati container. I container sono leggeri, portatili e consistenti, il che significa che un'applicazione containerizzata funzionerà allo stesso modo su qualsiasi sistema che supporta Docker, indipendentemente dalle differenze nell'ambiente di sviluppo o di produzione. Docker semplifica il processo di sviluppo e distribuzione delle applicazioni, migliorando l'efficienza e la scalabilità.
+https://www.docker.com/  (Docker)
+https://www.docker.com/get-started  (Docker - Get started)
+
+INSTALLIAMO DOCKER SUL NOSTRO PC.
+
+Come funziona un server web?
+Un server web è un software che gestisce le richieste HTTP da parte dei client (come i browser web) e restituisce le risposte appropriate, come pagine HTML, immagini o altri contenuti. Il server web ascolta le richieste su una porta specifica (di solito la porta 80 per HTTP o la porta 443 per HTTPS) e utilizza un protocollo di comunicazione per scambiare dati con i client. 
+Quando un client invia una richiesta, il server web elabora la richiesta, recupera i dati necessari (ad esempio, da un database o da file statici) e restituisce la risposta al client, che poi visualizza il contenuto al utente finale.
+
+Differenza tra server web e server di database:
+Un server web è responsabile di gestire le richieste HTTP e restituire contenuti web, mentre un server di database è responsabile di gestire le richieste di dati e fornire accesso a un database. Il server web si occupa della logica di presentazione e dell'interazione con l'utente, mentre il server di database si occupa della gestione dei dati, delle query e delle operazioni di archiviazione. In un'applicazione web, il server web e il server di database lavorano insieme per fornire una funzionalità completa all'utente finale.
+
+Differenza tra Virtual machine e container:
+Una virtual machine (VM) è un ambiente di esecuzione completo che emula un sistema operativo, consentendo di eseguire più sistemi operativi su un singolo host fisico. Ogni VM include il proprio kernel, librerie e applicazioni, ed è isolata dalle altre VM.
+Un container, d'altra parte, è un ambiente di esecuzione più leggero che condivide il kernel del sistema operativo host, ma isola le applicazioni e le loro dipendenze in modo che possano essere eseguite in modo indipendente. I container sono più efficienti in termini di risorse rispetto alle VM, poiché non richiedono un intero sistema operativo per ogni istanza, ma offrono comunque un alto livello di isolamento e portabilità.
+
+Apache ed Nginx sono due dei server web più popolari e ampiamente utilizzati al mondo. Apache è noto per la sua flessibilità, estensibilità e supporto per una vasta gamma di moduli, mentre Nginx è apprezzato per le sue prestazioni elevate, la gestione efficiente delle connessioni e la capacità di gestire un gran numero di richieste simultanee. La scelta tra i due dipende dalle esigenze specifiche del progetto, dalle preferenze personali e dalle caratteristiche richieste dall'applicazione web.
+Noi useremo Nginx come server web per la nostra applicazione Angular, poiché è noto per le sue prestazioni elevate e la capacità di gestire un gran numero di richieste simultanee, il che lo rende una scelta ideale per applicazioni web moderne e ad alto traffico. Inoltre, Nginx è facile da configurare e offre funzionalità avanzate come il bilanciamento del carico e la gestione delle connessioni, che possono migliorare ulteriormente le prestazioni della nostra applicazione.

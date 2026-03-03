@@ -38,24 +38,31 @@ export class RssService {
     for (const feed of feeds) { //per ogni feed della lista, faccio una richiesta fetch per ottenere il testo del feed e poi lo passo alla funzione parseRss per estrarre le news
       
       const request = fetch(feed.url)
-      .then(resp => resp.text())
+      .then(async resp => {
+        const origin = feed.name; //prendo il nome del feed, che userò come origine della news
+        const xml = await resp.text(); //tutti i formati che non sono json si devono trattare come testo
+        return { xml, origin }; //restituisco un oggetto con il testo del feed e l'origine, così posso passare entrambe le informazioni alla funzione parseRss
+      })
+
       .catch(err => '') //se c'è un errore nella richiesta, restituisco una stringa vuota per evitare che il parser xml si rompa;
       requests.push(request);
 
     }
 
-    Promise.all(requests).then(res => this.parseRss(res));  //Promise.all è un metodo che prende un array di promesse e restituisce una nuova promessa che si risolve quando tutte le promesse dell'array si sono risolte, o si rifiuta se una qualsiasi delle promesse dell'array si rifiuta. In questo caso, sto usando Promise.all per aspettare che tutte le richieste fetch siano completate prima di procedere con l'elaborazione dei risultati.
+    Promise.all(requests).then(res => this.parseRss(res)); 
+    //Promise.all è un metodo che prende un array di promesse e restituisce una nuova promessa che si risolve quando tutte le promesse dell'array si sono risolte, o si rifiuta se una qualsiasi delle promesse dell'array si rifiuta. In questo caso, sto usando Promise.all per aspettare che tutte le richieste fetch siano completate prima di procedere con l'elaborazione dei risultati.
+    //res è un array di oggetti con il testo del feed e l'origine, che passo alla funzione parseRss per estrarre le news e aggiungere l'origine a ogni news
   }
 
-  parseRss(texts: string[]): any {   //*1
+    parseRss(responses:any[]): any {   //*1
 
     const latestNews: News[] = [];   //*1.1
 
-    for (const text of texts) {
+    for (const response of responses) {
 
     const parser = new DOMParser();  //*1.2
 
-    const xml = parser.parseFromString(text, 'application/xml'); //*1.3
+    const xml = parser.parseFromString(response.xml, 'application/xml'); //*1.3
 
     const items = xml.querySelectorAll('item'); //*1.4
 
@@ -66,8 +73,9 @@ export class RssService {
         title: element.querySelector('title')?.innerHTML!,
         description: element.querySelector('description')?.innerHTML!,
         url: element.querySelector('link')?.innerHTML!,
-        origin: 'unknown'  //per ora non so come ottenere l'origine della news, ma in futuro potrei voler aggiungere questa informazione al mio modello di news e poi estrarla dal feed rss
-
+        //origin: 'unknown'  //per ora non so come ottenere l'origine della news, ma in futuro potrei voler aggiungere questa informazione al mio modello di news e poi estrarla dal feed rss
+        origin: response.origin, //prendo l'origine dal feed, che ho passato alla funzione parseRss insieme al testo del feed, così posso associare ogni news all'origine da cui proviene
+        
         //const pubDateRaw = element.querySelector('pubDate')?.textContent ?? '';
         //const parsedDate = new Date(pubDateRaw);
         //pubDate: element.querySelector('pubDate')?.innerHTML!,
