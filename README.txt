@@ -275,3 +275,8 @@ export const environment = {
   }
 };
 
+
+Ho creato il file Dockerfile per containerizzare la nostra applicazione Angular con Nginx. Il Dockerfile contiene le istruzioni per costruire l'immagine Docker, che include la compilazione dell'applicazione Angular e la configurazione di Nginx per servire i file statici.
+
+ docker build -t feedreader:1.0.0 . - Questo comando costruisce l'immagine Docker utilizzando il Dockerfile presente nella directory corrente (indicato da ".") e assegna all'immagine il tag "feedReader:1.0.0". 
+   Dopo aver eseguito questo comando, avrai un'immagine Docker pronta per essere eseguita come container.
