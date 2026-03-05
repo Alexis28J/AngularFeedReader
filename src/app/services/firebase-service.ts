@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FirebaseApp, initializeApp } from "firebase/app";
+import { environment } from '../../environments/environment.development';
 
 
 @Injectable({
@@ -7,19 +8,22 @@ import { FirebaseApp, initializeApp } from "firebase/app";
   
 })
 export class FirebaseService { //*1
-  firebaseConfig = {   
-  apiKey: "AIzaSyCTLd1TZjSo5FCifm2GFJU-XTQvp1Xi6zA",
-  authDomain: "feed-reader-14409.firebaseapp.com",
-  projectId: "feed-reader-14409",
-  storageBucket: "feed-reader-14409.firebasestorage.app",
-  messagingSenderId: "945417544215",
-  appId: "1:945417544215:web:06c14ebcfeb6006bde3252"
-};
+//   firebaseConfig = {   
+//   apiKey: "...",
+//   authDomain: "...",
+//   projectId: "...",
+//   storageBucket: "...",
+//   messagingSenderId: "...",
+//   appId: "..."
+// };
 
 app: FirebaseApp;  //*2
 
 constructor(){
-  this.app = initializeApp(this.firebaseConfig);
+  //this.app = initializeApp(this.firebaseConfig);
+  this.app = initializeApp(environment.firebaseConfig);
 }
 
 }
+
+//Il constructor serve per inizializzare l'app Firebase con la configurazione fornita. In questo modo, quando il servizio viene creato, l'app Firebase è già pronta per essere utilizzata.

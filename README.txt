@@ -225,3 +225,35 @@ Un container, d'altra parte, è un ambiente di esecuzione più leggero che condi
 
 Apache ed Nginx sono due dei server web più popolari e ampiamente utilizzati al mondo. Apache è noto per la sua flessibilità, estensibilità e supporto per una vasta gamma di moduli, mentre Nginx è apprezzato per le sue prestazioni elevate, la gestione efficiente delle connessioni e la capacità di gestire un gran numero di richieste simultanee. La scelta tra i due dipende dalle esigenze specifiche del progetto, dalle preferenze personali e dalle caratteristiche richieste dall'applicazione web.
 Noi useremo Nginx come server web per la nostra applicazione Angular, poiché è noto per le sue prestazioni elevate e la capacità di gestire un gran numero di richieste simultanee, il che lo rende una scelta ideale per applicazioni web moderne e ad alto traffico. Inoltre, Nginx è facile da configurare e offre funzionalità avanzate come il bilanciamento del carico e la gestione delle connessioni, che possono migliorare ulteriormente le prestazioni della nostra applicazione.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Lezione di giovedì 5 marzo 2026:
+
+Per nascondere la chiave API di Firebase, creiamo un environment file in Angular. Gli environment files sono file di configurazione che contengono variabili e impostazioni specifiche per diversi ambienti (sviluppo, produzione, ecc.). In questo modo, possiamo mantenere la chiave API di Firebase al sicuro e non esporla direttamente nel codice sorgente.
+
+https://angular.dev/tools/cli/environments - (Angular CLI - Environments)
+
+ng generate environments - per creare i file di environment
+
+Ho copiato le apiKey e le altre configurazioni di Firebase nei file environment.ts e environment.prod.ts. In questo modo, possiamo accedere a queste variabili in modo sicuro all'interno del nostro codice Angular, senza esporle direttamente.
+
+Poi, su gitignore, ho aggiunto i file environment.ts e environment.prod.ts per evitare che vengano tracciati da Git e quindi esposti pubblicamente su repository come GitHub.
+
+Su firebase-service.ts, ho importato l'environment file e ho sostituito le variabili di configurazione di Firebase con le variabili definite negli environment files. In questo modo, quando eseguiamo l'applicazione in modalità sviluppo o produzione, verranno utilizzate le configurazioni appropriate senza esporre la chiave API direttamente nel codice sorgente.
+
+angular.json è il file di configurazione principale per un progetto Angular. Contiene informazioni su come costruire, servire e testare l'applicazione, nonché configurazioni specifiche per diversi ambienti.
+
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }..]..}
+
+"replace" indica il file originale che vogliamo sostituire, mentre "with" indica il file che vogliamo utilizzare al suo posto durante la compilazione. In questo caso, stiamo dicendo ad Angular di sostituire environment.ts con environment.development.ts quando eseguiamo l'applicazione in modalità sviluppo. 
+Questo ci permette di avere configurazioni diverse per ambienti diversi senza dover modificare manualmente il codice ogni volta.
