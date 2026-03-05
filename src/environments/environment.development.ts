@@ -1,5 +1,4 @@
 export const environment = {
-
     production: true,  // Imposta a true per abilitare le ottimizzazioni di produzione e disabilitare i messaggi di log in console.
     // false è utile durante lo sviluppo per vedere i messaggi di log e avere un ambiente più flessibile, mentre true è consigliato per la produzione per migliorare le prestazioni e la sicurezza.
     firebaseConfig: {   

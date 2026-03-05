@@ -257,3 +257,21 @@ angular.json è il file di configurazione principale per un progetto Angular. Co
 
 "replace" indica il file originale che vogliamo sostituire, mentre "with" indica il file che vogliamo utilizzare al suo posto durante la compilazione. In questo caso, stiamo dicendo ad Angular di sostituire environment.ts con environment.development.ts quando eseguiamo l'applicazione in modalità sviluppo. 
 Questo ci permette di avere configurazioni diverse per ambienti diversi senza dover modificare manualmente il codice ogni volta.
+
+
+environment.ts  e  environment.prod.ts sono file di configurazione in un progetto Angular che contengono variabili e impostazioni specifiche per diversi ambienti (sviluppo e produzione). 
+Questi file vengono utilizzati per mantenere separate le configurazioni e le chiavi API, consentendo di utilizzare valori diversi a seconda dell'ambiente in cui l'applicazione viene eseguita.
+
+export const environment = {
+  production: false, // Imposta a true per abilitare le ottimizzazioni di produzione e disabilitare i messaggi di log in console.
+  // false è utile durante lo sviluppo per vedere i messaggi di log e avere un ambiente più flessibile, mentre true è consigliato per la produzione per migliorare le prestazioni e la sicurezza.
+  firebaseConfig: {   
+    apiKey: "AIzaSyCTLd1TZjSo5FCifm2GFJU-XTQvp1Xi6zA",
+    authDomain: "feed-reader-14409.firebaseapp.com",
+    projectId: "feed-reader-14409",
+    storageBucket: "feed-reader-14409.firebasestorage.app",
+    messagingSenderId: "945417544215",
+    appId: "1:945417544215:web:06c14ebcfeb6006bde3252"
+  }
+};
+
