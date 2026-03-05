@@ -266,7 +266,7 @@ export const environment = {
   production: false, // Imposta a true per abilitare le ottimizzazioni di produzione e disabilitare i messaggi di log in console.
   // false è utile durante lo sviluppo per vedere i messaggi di log e avere un ambiente più flessibile, mentre true è consigliato per la produzione per migliorare le prestazioni e la sicurezza.
   firebaseConfig: {   
-    apiKey: "AIzaSyCTLd1TZjSo5FCifm2GFJU-XTQvp1Xi6zA",
+    apiKey: "...........",   //COPIARE LA CHIAVE API DI FIREBASE
     authDomain: "feed-reader-14409.firebaseapp.com",
     projectId: "feed-reader-14409",
     storageBucket: "feed-reader-14409.firebasestorage.app",
@@ -280,3 +280,22 @@ Ho creato il file Dockerfile per containerizzare la nostra applicazione Angular 
 
  docker build -t feedreader:1.0.0 . - Questo comando costruisce l'immagine Docker utilizzando il Dockerfile presente nella directory corrente (indicato da ".") e assegna all'immagine il tag "feedReader:1.0.0". 
    Dopo aver eseguito questo comando, avrai un'immagine Docker pronta per essere eseguita come container.
+
+
+NOTA: Ctrl + R per cercare un comando eseguito in passato nel terminale. Questa funzionalità è molto utile per risparmiare tempo e evitare di dover digitare nuovamente comandi complessi o lunghi. Basta premere Ctrl + R e iniziare a digitare una parte del comando che si desidera richiamare, e il terminale mostrerà i comandi corrispondenti dalla cronologia.
+
+
+https://angular.dev/api/router/withHashLocation - (Angular Router - withHashLocation) 
+Angular è una Single Page Application (SPA), il che significa che l'applicazione viene caricata una sola volta e tutte le interazioni avvengono all'interno di quella singola pagina. Quando si utilizza il routing in Angular, è possibile scegliere tra due strategie di routing: PathLocationStrategy (senza hash) e HashLocationStrategy (con hash).
+
+
+Un client FTP (File Transfer Protocol) è un software che consente di trasferire file tra un computer locale e un server remoto utilizzando il protocollo FTP. I client FTP offrono funzionalità come la navigazione dei file, il caricamento e il download di file, la gestione dei permessi e la sincronizzazione dei file. 
+Sono strumenti essenziali per gli sviluppatori web e gli amministratori di sistema per gestire i file sui server web.
+https://filezilla-project.org/ (FileZilla - un client FTP open source)
+https://cyberduck.io/ (Cyberduck - un client FTP open source) 
+
+
+package.json è un file di configurazione utilizzato nei progetti Node.js e Angular che contiene informazioni sul progetto, le dipendenze, gli script e altre configurazioni.
+
+
+https://www.npmjs.com/ (NPM - Node Package Manager) - NPM è un gestore di pacchetti per JavaScript che consente agli sviluppatori di installare, condividere e gestire le dipendenze dei loro progetti. NPM è ampiamente utilizzato per gestire le librerie e i framework necessari per lo sviluppo di applicazioni web e Node.js. Con NPM, gli sviluppatori possono facilmente installare pacchetti, aggiornare le dipendenze e condividere il proprio codice con la comunità.
